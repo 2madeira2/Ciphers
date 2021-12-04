@@ -48,6 +48,6 @@
       <Label layoutX="49.0" layoutY="104.0" text="Введите ключ:" />
       <Button fx:id="btn" disable="true" layoutX="253.0" layoutY="247.0" mnemonicParsing="false" onAction="#doAction" text="Выполнить" />
       <Label layoutX="302.0" layoutY="113.0" text="Результат:" />
-      <Label layoutX="316.0" layoutY="150.0" />
+      <Label fx:id="output" layoutX="316.0" layoutY="150.0" />
    </children>
 </Pane>
