@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sample.ciphers.Cipher;
+import sample.ciphers.CipherFactory;
 import sample.ciphers.PolybianCipher;
 import sample.ciphers.SkitalCipher;
 
@@ -20,39 +22,14 @@ public class Controller {
     private ComboBox<String> chooseAction;
 
     public void doAction(javafx.event.ActionEvent actionEvent) {
+        CipherFactory factory = new CipherFactory();
+        Cipher cipher = factory.getCipher(chooseAlgorithm.getValue());
+
         if (chooseAction.getValue().equals("Шифровать")){
-            switch (chooseAlgorithm.getValue()){
-                case "Шифр Скитала":
-                    System.out.println("Шифр Скитала");
-                    SkitalCipher cipher = new SkitalCipher();
-                    output.setText(cipher.encrypt(input.getText(), key.getText()));
-                    break;
-                case "Полибианский квадрат":
-                    System.out.println("Квадрат");
-                    PolybianCipher cipher1 = new PolybianCipher();
-                    output.setText(cipher1.encrypt(input.getText(), key.getText()));
-                    break;
-                case "Шифр Уитстона":
-                    System.out.println("Уитстон");
-                    break;
-            }
+            output.setText(cipher.encrypt(input.getText(),key.getText()));
         }
         else{
-            switch (chooseAlgorithm.getValue()){
-                case "Шифр Скитала":
-                    System.out.println("Шифр Скитала");
-                    SkitalCipher cipher = new SkitalCipher();
-                    output.setText(cipher.decrypt(input.getText(), key.getText()));
-                    break;
-                case "Полибианский квадрат":
-                    System.out.println("Квадрат");
-                    PolybianCipher cipher1 = new PolybianCipher();
-                    output.setText(cipher1.decrypt(input.getText(), key.getText()));
-                    break;
-                case "Шифр Уитстона":
-                    System.out.println("Уитстон");
-                    break;
-            }
+            output.setText(cipher.decrypt(input.getText(), key.getText()));
         }
     }
 
