@@ -7,8 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.ciphers.Cipher;
 import sample.ciphers.CipherFactory;
-import sample.ciphers.PolybianCipher;
-import sample.ciphers.SkitalCipher;
 
 public class Controller {
 
@@ -24,7 +22,6 @@ public class Controller {
     public void doAction(javafx.event.ActionEvent actionEvent) {
         CipherFactory factory = new CipherFactory();
         Cipher cipher = factory.getCipher(chooseAlgorithm.getValue());
-
         if (chooseAction.getValue().equals("Шифровать")){
             output.setText(cipher.encrypt(input.getText(),key.getText()));
         }

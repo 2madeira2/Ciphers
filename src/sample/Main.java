@@ -15,8 +15,6 @@ public class Main extends Application {
         primaryStage.setTitle("Encoder");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 
 
