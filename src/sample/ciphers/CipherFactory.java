@@ -5,7 +5,7 @@ public class CipherFactory {
         Cipher toReturn = null;
         switch(type){
             case "Шифр Скитала":
-                toReturn = new SkitalCipher();
+                toReturn = new ScytaleCipher();
                 break;
             case "Полибианский квадрат":
                 toReturn = new PolybianCipher();

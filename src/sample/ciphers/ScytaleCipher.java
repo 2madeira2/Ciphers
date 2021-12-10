@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SkitalCipher implements Cipher {
+public class ScytaleCipher implements Cipher {
     @Override
     public String encrypt(String text, String key) {
         int rows = Integer.parseInt(getParameters(text, key).get("rows"));
@@ -18,7 +18,13 @@ public class SkitalCipher implements Cipher {
                     counter++;
                 }
             }
-        return Arrays.deepToString(mass);
+        StringBuilder result = new StringBuilder();
+        for (char[] chars : mass) {
+            for (char aChar : chars) {
+                result.append(aChar);
+            }
+        }
+        return result.toString();
     }
 
     @Override

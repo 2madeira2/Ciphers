@@ -13,7 +13,7 @@ public class Controller {
     public TextField input;
     public TextField key;
     public Button btn;
-    public Label output;
+    public TextField output;
     @FXML
     private ComboBox<String> chooseAlgorithm;
     @FXML
