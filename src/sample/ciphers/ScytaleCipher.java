@@ -64,8 +64,8 @@ public class ScytaleCipher implements Cipher {
                 dop_str.append(" ");
             text += dop_str;
         }
-        map.put("rows", Integer.toString(rows));
-        map.put("col", Integer.toString(col));
+        map.put("rows", Integer.toString(col));
+        map.put("col", Integer.toString(rows));
         map.put("text", text);
         return map;
     }
