@@ -5,7 +5,10 @@ public class PolybianCipher implements Cipher {
 //    private final char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
     @Override
-    public String encrypt(String text, String key) {
+    public String encrypt(String text, String key) throws PolybiusException {
+        if(key.length()!=25){
+            throw new PolybiusException();
+        }
         char [][] mass = getAlphabetUsingKey(key);
         StringBuilder result_str = new StringBuilder();
         for(char letter : text.toCharArray()){
@@ -54,6 +57,8 @@ public class PolybianCipher implements Cipher {
         }
         return mass;
     }
+
+
 //        StringBuilder table_str = new StringBuilder();
 //        table_str.append(key);
 //        for (Character letter : alphabyte){
@@ -71,3 +76,4 @@ public class PolybianCipher implements Cipher {
 //        }
 //        return mass;
     }
+

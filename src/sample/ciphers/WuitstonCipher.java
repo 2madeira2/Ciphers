@@ -3,10 +3,17 @@ package sample.ciphers;
 public class WuitstonCipher implements Cipher {
     @Override
     public String encrypt(String text, String key) {
-        String alphabyteOne = "кларбвгдежзиймнопстуфхцчшщъыьэюя._,-";
-        String alphabyteSec = "кларнетбвгджзиймопсуфхцчшщъыьэюя._,-";
-        char[][] firstTable = new char[9][4];
-        char[][] secondTable = new char[9][4];
+        String[] parameters = key.split("\n");
+        int rows = Integer.parseInt(parameters[0]);
+        int columns = Integer.parseInt(parameters[1]);
+        String alphabyteOne = parameters[2];
+        String alphabyteSec = parameters[3];
+        for (String par : parameters) System.out.println(par);
+
+//        String alphabyteOne = "кларбвгдежзиймнопстуфхцчшщъыьэюя._,-";
+//        String alphabyteSec = "кларнетбвгджзиймопсуфхцчшщъыьэюя._,-";
+        char[][] firstTable = new char[rows][columns];
+        char[][] secondTable = new char[rows][columns];
         int counter = 0;
         for (int i = 0; i < firstTable.length; i++) {
             for (int j = 0; j < firstTable[i].length; j++) {

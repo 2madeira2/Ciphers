@@ -1,19 +1,19 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import sample.ciphers.Cipher;
 import sample.ciphers.CipherFactory;
+import sample.ciphers.PolybiusException;
 
 public class Controller {
 
     public TextField input;
-    public TextField key;
+    public TextArea key;
     public Button btn;
     public TextField output;
+    public Label warning;
+    public TextArea mnogo;
     @FXML
     private ComboBox<String> chooseAlgorithm;
     @FXML
@@ -23,7 +23,13 @@ public class Controller {
         CipherFactory factory = new CipherFactory();
         Cipher cipher = factory.getCipher(chooseAlgorithm.getValue());
         if (chooseAction.getValue().equals("Шифровать")){
-            output.setText(cipher.encrypt(input.getText(),key.getText()));
+            try {
+                output.setText(cipher.encrypt(input.getText(), key.getText()));
+            }
+            catch (PolybiusException ex){
+                warning.setText(ex.getMessage());
+                warning.setStyle("-fx-text-fill: red; -fx-font-size: 26px;");
+            }
         }
         else{
             output.setText(cipher.decrypt(input.getText(), key.getText()));
@@ -35,7 +41,7 @@ public class Controller {
             btn.setDisable(false);
             System.out.println("Hello");
         }
-        else{
+        else {
             btn.setDisable(true);
         }
     }
