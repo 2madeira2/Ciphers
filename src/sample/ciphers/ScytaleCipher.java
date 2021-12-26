@@ -1,12 +1,20 @@
 package sample.ciphers;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ScytaleCipher implements Cipher {
+
+    private String text;
+    private final String key;
+
+    public ScytaleCipher(String text, String key){
+        this.text = text;
+        this.key = key;
+    }
+
     @Override
-    public String encrypt(String text, String key) {
+    public String encrypt() {
         int rows = Integer.parseInt(getParameters(text, key).get("rows"));
         int col = Integer.parseInt(getParameters(text, key).get("col"));
         text = getParameters(text, key).get("text");
@@ -28,7 +36,7 @@ public class ScytaleCipher implements Cipher {
     }
 
     @Override
-    public String decrypt(String text, String key) {
+    public String decrypt() {
         int rows = Integer.parseInt(getParameters(text, key).get("rows"));
         int col = Integer.parseInt(getParameters(text, key).get("col"));
         text = getParameters(text, key).get("text");

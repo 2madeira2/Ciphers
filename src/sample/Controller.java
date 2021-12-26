@@ -13,26 +13,20 @@ public class Controller {
     public Button btn;
     public TextField output;
     public Label warning;
-    public TextArea mnogo;
     @FXML
     private ComboBox<String> chooseAlgorithm;
     @FXML
     private ComboBox<String> chooseAction;
 
-    public void doAction(javafx.event.ActionEvent actionEvent) {
-        CipherFactory factory = new CipherFactory();
+    public void doAction(javafx.event.ActionEvent actionEvent) throws PolybiusException {
+        CipherFactory factory = new CipherFactory(input.getText(), key.getText());
         Cipher cipher = factory.getCipher(chooseAlgorithm.getValue());
+
         if (chooseAction.getValue().equals("Шифровать")){
-            try {
-                output.setText(cipher.encrypt(input.getText(), key.getText()));
-            }
-            catch (PolybiusException ex){
-                warning.setText(ex.getMessage());
-                warning.setStyle("-fx-text-fill: red; -fx-font-size: 26px;");
-            }
+            output.setText(cipher.encrypt());
         }
         else{
-            output.setText(cipher.decrypt(input.getText(), key.getText()));
+            output.setText(cipher.decrypt());
         }
     }
 

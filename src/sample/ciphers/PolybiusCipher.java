@@ -1,11 +1,17 @@
 package sample.ciphers;
 
-public class PolybianCipher implements Cipher {
+public class PolybiusCipher implements Cipher {
 
-//    private final char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+    private final String text;
+    private final String key;
+
+    public PolybiusCipher(String text, String key){
+        this.text = text;
+        this.key = key;
+    }
 
     @Override
-    public String encrypt(String text, String key) throws PolybiusException {
+    public String encrypt() throws PolybiusException {
         if(key.length()!=25){
             throw new PolybiusException();
         }
@@ -27,7 +33,7 @@ public class PolybianCipher implements Cipher {
     }
 
     @Override
-    public String decrypt(String text, String key) {
+    public String decrypt() {
         char [][] mass = getAlphabetUsingKey(key);
         StringBuilder result_str = new StringBuilder();
         for(char letter : text.toCharArray()){
@@ -57,23 +63,4 @@ public class PolybianCipher implements Cipher {
         }
         return mass;
     }
-
-
-//        StringBuilder table_str = new StringBuilder();
-//        table_str.append(key);
-//        for (Character letter : alphabyte){
-//            if(!key.contains(String.valueOf(letter))){
-//                table_str.append(letter);
-//            }
-//        }
-//        char [][] mass = new char[5][5];
-//        int counter = 0;
-//        for (int i = 0; i < mass.length; i++) {
-//            for (int j = 0; j < mass[i].length; j++) {
-//                mass[i][j] = table_str.toString().toCharArray()[counter];
-//                counter++;
-//            }
-//        }
-//        return mass;
-    }
-
+}
